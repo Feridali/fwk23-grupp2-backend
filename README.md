@@ -36,7 +36,8 @@ PORT=3002
 
 #### `Run Complete Project:`
 - You will need to add both Auth and Frontend Servers to run the complete project.
-- Run Auth Server on PORT=3001
 - Run Frontend Server on PORT=3000
+- Run Auth Server on PORT=3001
+- Run Backend Server on PORT=3002
 - .ENV file in both Auth & Backend Server, both containing the same JWT_SECRET.
 
