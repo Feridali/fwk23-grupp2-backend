@@ -1,11 +1,41 @@
-const express = require ('express'); 
-const bodyParser = require ('body-parser');
-const cors = require ('cors');
-const dataRoutes = require ('./routes/data_routes');
+/*
+============================================
+Init Setup
+============================================
+*/
 
+const express = require("express");
+const bodyParser = require("body-parser");
+const cors = require("cors");
+const jwt = require("jsonwebtoken");
+const helmet = require("helmet");
+const rateLimiter = require("express-rate-limit");
 const app = express();
 
-app.use (cors());
-app.use (bodyParser.json());
-app.use('/data', dataRoutes);
- module.exports = app;
+const dataRoutes = require("./routes/data_routes");
+
+/*
+============================================
+Middleware for site and user protection.
+============================================
+*/
+
+app.use(cors());
+app.use(bodyParser.json());
+
+// Use helmet basic functions
+app.use(helmet());
+
+//Rate Limiter for DDoS attack etc
+const rateLimit = rateLimiter({
+  timeLimit: 10 * 60 * 1000, // 10min
+  maxRequests: 50,
+});
+
+app.use(rateLimit);
+
+//Use JWT auth API route in data_routes.js
+app.use("/data", dataRoutes);
+
+// Export app t
+module.exports = app;
