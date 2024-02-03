@@ -19,13 +19,14 @@ const dataRoutes = require("./routes/data_routes");
 Middleware for site and user protection.
 ============================================
 */
-// Use helmet basic functions
+
+// Use helmet 
 app.use(helmet());
 
 app.use(cors());
 app.use(bodyParser.json());
 
-//Rate Limiter for DDoS attack etc
+//Rate Limiter 
 const rateLimit = rateLimiter({
   timeLimit: 10 * 60 * 1000, // 10min
   maxRequests: 50,
