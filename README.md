@@ -1,5 +1,7 @@
 # FWK23S - Grupp 2 - Backend Server.
 
+![project_structure](https://github.com/Feridali/fwk23-grupp2-backend/assets/143492796/4aaa3f7c-ea67-4a1e-b774-282afa9a9c24)
+
 ## Run Complete Project:
 
 ### `Auth and Frontend Servers:`
